@@ -7,16 +7,22 @@ snake[0] =  {
     y: 8 * box
 }
 let direction = "right";
+
+/* SPAWM DAS COMIDAS */
 let comida = {
     x: Math.floor(Math.random() * 15 + 1) * box,
     y: Math.floor(Math.random() * 15 + 1) * box
 }
+let score = 0;
 
+
+/* CRIA BG */
 function objBG()    {
     context.fillStyle = "lightgreen";
     context.fillRect(0, 0, 16 * box, 16 * box);
 }
 
+/* CRIA A COBRINHA */
 function objSnake() {
     for(i=0; i < snake.length; i++) {
         context.fillStyle = "black";
@@ -24,6 +30,7 @@ function objSnake() {
     }
 }
 
+/* CRIA A COMIDA */
 function objComida()   {
     context.fillStyle = "red";
     context.fillRect(comida.x, comida.y, box, box);
@@ -31,6 +38,7 @@ function objComida()   {
 
 document.addEventListener('keydown', update);
 
+/* ADICIONA CONTROLES */
 function update (event) {
     if(event.keyCode == 37 && direction != "right") direction = "left";
     if(event.keyCode == 38 && direction != "down") direction = "up";
@@ -38,32 +46,51 @@ function update (event) {
     if(event.keyCode == 40 && direction != "up") direction = "down";
 }
 
+/* CRIA PONTUAÇÃO */
+
 function startGame(){
+    
+    /* ADICIONA PASSAGEM PELAS PARADES */
     if(snake[0].x > 15 * box && direction == "right") snake[0].x = 0;
     if(snake[0].x < 0 && direction == "left") snake[0].x = 16 * box;
     if(snake[0].y > 15 * box && direction == "down") snake[0].y = 0;
     if(snake[0].y < 0 && direction == "up") snake[0].y = 16 * box;
 
+    /* ADICIONA COLISÃO */
+    for(i = 1; i < snake.length; i++){
+        if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
+            clearInterval(jogo);
+            alert('VOCÊ SI MORREU :(')
+        }
+    }
+    
     objBG();
     objSnake();
     objComida();
-
+    
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
 
+    /* ADICIONA MOVIMENTAÇÃO */
     if(direction == "right") snakeX += box;
     if(direction == "left") snakeX -= box;
     if(direction == "up") snakeY -= box;
     if(direction == "down") snakeY += box;
-
+    
+    /* SOMA COMIDA A COBRINHA */
     if(snakeX != comida.x || snakeY != comida.y)    {
         snake.pop();
     }
     else    {
         comida.x = Math.floor(Math.random() * 15 + 1) * box;
         comida.y = Math.floor(Math.random() * 15 + 1) * box;
+        score++;
     }
+    
+    
+    console.log(score);
 
+    /* CALCULA NOVA CABEÇA */
     let newHead =   {
         x: snakeX,
         y: snakeY
@@ -71,5 +98,7 @@ function startGame(){
 
     snake.unshift(newHead);
 }
+
+
 
 let jogo = setInterval(startGame, 100)

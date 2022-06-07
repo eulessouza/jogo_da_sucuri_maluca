@@ -1,0 +1,27 @@
+*   {
+    box-sizing: border-box;
+}
+
+body    {
+    height: 90vh;
+    width: 90;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.banner {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo {
+    margin: 8px;
+}
+
+.jogo {
+    
+}
