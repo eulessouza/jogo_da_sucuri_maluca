@@ -46,6 +46,21 @@ function update (event) {
     if(event.keyCode == 40 && direction != "up") direction = "down";
 }
 
+function moveUp(){
+    if(direction != "down")direction = "up"
+}
+
+function moveDown(){
+    if(direction != "up")direction = "down"
+}
+
+function moveLeft(){
+    if(direction != "right")direction = "left"
+}
+
+function moveRight(){
+    if(direction != "left")direction = "right"
+}
 /* CRIA PONTUAÇÃO */
 
 function startGame(){
@@ -60,7 +75,7 @@ function startGame(){
     for(i = 1; i < snake.length; i++){
         if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
             clearInterval(jogo);
-            alert('VOCÊ SI MORREU :(')
+            alert('VOCÊ SI MORREU! 😩\nAperte F5 para reiniciar!\nPontuação: '+ score)
         }
     }
     
@@ -86,9 +101,9 @@ function startGame(){
         comida.y = Math.floor(Math.random() * 15 + 1) * box;
         score++;
     }
-    
-    
+
     console.log(score);
+    document.getElementById("pontos").innerHTML = +score
 
     /* CALCULA NOVA CABEÇA */
     let newHead =   {

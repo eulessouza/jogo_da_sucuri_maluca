@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
     <script defer src="js/script.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="icon" type="image/gif" href="img/icon.gif">
     <title>Jogo da Sucuri Maluca by Eules</title>
 </head>
@@ -14,9 +15,29 @@
         <img src="img/icon.gif" style="max-width: 64px; max-height: 64px" alt="...">
         <h1 class="titulo">A SUCURI MALUCA</h1>
     </div>
+    <h4>Use as setas ou os botões abaixo da tela do jogo</h4>
+    <p>Pontos: <span id="pontos"></span></p>
     <div class="jogo">
         <canvas id="snake" width="512" height="512"></canvas>
     </div>
+    <div class="botoes">
+        <button class="botao to-center" onclick="moveUp()">
+            <i class="bi bi-arrow-up-circle-fill"></i>
+        </button>
+        <button class="botao to-center" onclick="moveDown()">
+            <i class="bi bi-arrow-down-circle-fill"></i>
+        </button>
+        <button class="botao to-left" onclick="moveLeft()">
+            <i class="bi bi-arrow-left-circle-fill"></i>
+        </button>
+        <button class="botao to-right" onclick="moveRight()">
+            <i class="bi bi-arrow-right-circle-fill"></i>
+        </button>
+    </div>
+    <div class="placar">
+
+    </div>
+
     
 </body>
 </html>

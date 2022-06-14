@@ -22,6 +22,37 @@ body    {
     margin: 8px;
 }
 
-.jogo {
-    
+.botoes{
+    margin: 10px;
+}
+
+.flex{
+    display: flex;
+}
+
+.to-left{
+    align-self: lef;
+}
+
+.to-right{
+    align-self: right;
+}
+
+.to-center{
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.botao{
+    background-color: none;
+    border: none;
+    color: none;
+
+    padding: 10px 10px;
+    margin-right: 15px;
+    font-size: 20px;
+
+    cursor: pointer;
+    transition: .3s ease all;
 }
